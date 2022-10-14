@@ -44,12 +44,13 @@
 				<!-- Two -->
 <!--
 		Template for portfolio projects
-
+				{%for project in projs%}
 				<article class="col-6 col-12-xsmall work-item">
-					<a href="repo link" class="image fit thumb"><img src="image link" alt="" /></a>
-					<h3>title/h3>
-					<p>desc</p>
+					<a href={{project['repo_link']}} class="image fit thumb"><img src={{project['img_link']}} alt="" /></a>
+					<h3>{{project['name']}}/h3>
+					<p>{{project['desc']}}</p>
 				</article>
+				{%endfor%}
 
 -->
 
@@ -95,6 +96,13 @@
 								<p>This is a TK-inter application that transcribes speech to
 									text and translates it too.</p>
 							</article>
+							{%for project in projs%}
+							<article class="col-6 col-12-xsmall work-item">
+								<a href={{project['repo_link']}} target="_blank" class="image fit thumb"><img src={{project['img_link']}} alt="" /></a>
+								<h3>{{project['name']}}</h3>
+								<p>{{project['desc']}}</p>
+							</article>
+							{%endfor%}
 						</div>
 						<ul class="actions">
 							<li><a href="https://github.com/Nuethera?tab=repositories" target="_blank"
@@ -160,7 +168,7 @@
 
 		<!-- Scripts -->
 			<script src="../static/assets/js/jquery.min.js"></script>
-			<script src="../static/assets/js/jquery.poptrox.min.js"></script>
+			<!-- <script src="../static/assets/js/jquery.poptrox.min.js"></script> -->
 			<script src="../static/assets/js/browser.min.js"></script>
 			<script src="../static/assets/js/breakpoints.min.js"></script>
 			<script src="../static/assets/js/util.js"></script>
