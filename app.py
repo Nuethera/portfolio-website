@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import os
 import pymongo
 
@@ -16,10 +16,18 @@ def portfolio_schema(name, desc, repo_link, img_link):
 
 
 @app.route('/')
-def hello_world():
+def home():
     projs = list(pf_pro.find())
 
     return render_template('index.html',projs=projs)
+
+@app.route('/contact', methods=['POST'])
+def contact_form():
+    if request.method == 'POST':
+        print(request.form.get('name'))
+        print(request.form.get('email'))
+        print(request.form.get('message'))
+        return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

@@ -2036,7 +2036,15 @@ input, select, textarea {
 		}
 
 /* Image */
+	.crp_pf {
+		width: 740px; 
+		height: 434px; 
+		overflow: hidden;
+		}
 
+	.crp_pf img {
+		margin: -370px 0px 0px -217px;
+		}
 /* Image */
 
 	.image {
