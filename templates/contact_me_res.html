@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Vaishnav Jha</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="static/assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+	<div class="container">
+		<div class="table-wrapper">
+		  <table class="alt">
+			<thead>
+			  <tr>
+				<th>Date-Time</th>
+				<th>Name</th>
+				<th>Message</th>
+				<th>Status</th>
+			  </tr>
+			</thead>
+			<tbody>
+			{% for i in range(responses|length) %}
+			  <tr>
+				<td>{{ responses[i]['date'] + " - " + responses[i]['time']}}</td>
+				<td>{{ responses[i]['name'] }}</td>
+				<td>{{ responses[i]['message'] }}</td>
+				<td>{{ responses[i]['status'] }}</td>
+			  </tr>
+			{% endfor %}
+			</tbody>
+			<tfoot>
+			  <tr>
+				<td colspan="2"></td>
+				<td>100.00</td>
+			  </tr>
+			</tfoot>
+		  </table>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -7,10 +7,11 @@ import pymongo
 
 IST = pytz.timezone('Asia/Kolkata')
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mydb = myclient['portfolio_website']
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
+
+mydb = myclient['portfolio_website']
 M_pf_pro = mydb['pf_pro']
 M_contact_form = mydb['contact_form']
 
@@ -27,8 +28,23 @@ def contact_me(name, email, message, date, time, status='Pending'):
 @app.route('/')
 def home():
     projs = list(M_pf_pro.find())
-
     return render_template('index.html', projs=projs)
+
+
+@app.route('/ele')
+def elements():
+    return render_template('elements.html')
+
+
+@app.route('/contact-responses')
+def contact_responses():
+    res = list(M_contact_form.find().sort([
+              ('date', pymongo.DESCENDING),
+              ('time', pymongo.DESCENDING)
+            ]))
+    print(res)
+
+    return render_template('contact_me_res.html', responses=res, c=len(res))
 
 
 @app.route('/contact', methods=['POST'])
@@ -51,7 +67,6 @@ def contact_form():
         M_contact_form.insert_one(d)
 
         return redirect(url_for('home'))
-
 
 
 if __name__ == '__main__':
