@@ -4,13 +4,16 @@ import datetime as dt
 import pytz
 import pymongo
 
-
+# constants
+app = Flask(__name__)
 IST = pytz.timezone('Asia/Kolkata')
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
+# routes
 
+from user import routes
+#
 mydb = myclient['portfolio_website']
 M_pf_pro = mydb['pf_pro']
 M_contact_form = mydb['contact_form']
@@ -39,9 +42,9 @@ def elements():
 @app.route('/contact-responses')
 def contact_responses():
     res = list(M_contact_form.find().sort([
-              ('date', pymongo.DESCENDING),
-              ('time', pymongo.DESCENDING)
-            ]))
+        ('date', pymongo.DESCENDING),
+        ('time', pymongo.DESCENDING)
+    ]))
     print(res)
 
     return render_template('contact_me_res.html', responses=res, c=len(res))
