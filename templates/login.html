@@ -1,0 +1,26 @@
+
+{% include "header.html" %}
+<body class="is-preload">
+    <div class="container">
+        <div class="col-8 col-12-small">
+            <form method="post" action="/contact" id="login-form" name="login-form">
+                <div class="gtr-uniform gtr-50">
+                    <div class="col-6 col-12-xsmall">
+                        <input type="email" name="email" id="email" placeholder="Email"  required/></div>
+                    <div class="col-6 col-12-xsmall">
+                        <input type="password" name="password" id="password" placeholder="Password" required/></div>
+                        <p class="error">
+
+                        </p>
+                </div>
+            </form>
+            <ul class="actions">
+                <li><input type="submit" value="Send Message" form="login-form"/></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+
+{% include "footer.html" %}

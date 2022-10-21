@@ -1,14 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Vaishnav Jha</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/assets/css/main.css" />
-		<link rel="icon" href="static/images/favicon.ico">
-		<script src="https://kit.fontawesome.com/4b6fe19177.js" crossorigin="anonymous"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	</head>
+{% include "header.html" %}
+
 	<body class="is-preload">
 
 		<!-- Header -->
@@ -85,22 +76,10 @@
 					<section id="two">
 						<h2>Recent Work</h2>
 						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="../static/images/fulls/01.jpg" class="image fit thumb"><img src="../static/images/thumbs/01.jpg" alt="" /></a>
-								<h3>Text To Morse Code</h3>
-								<p>This is a simple python script that converts normal english
-									 text to morse code</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="../static/images/fulls/02.jpg" class="image fit thumb"><img src="../static/images/thumbs/02.jpg" alt="" /></a>
-								<h3>Transcriber Application</h3>
-								<p>This is a TK-inter application that transcribes speech to
-									text and translates it too.</p>
-							</article>
 							{%for project in projs%}
 							<article class="col-6 col-12-xsmall work-item">
 								<a href={{project['repo_link']}} target="_blank" class="image fit thumb">
-									<img src={{project['img_link']}} alt="" height="272px" width="464px"/>
+									<img src={{project['img_link']}} />
 								</a>
 								<h3>{{project['name']}}</h3>
 								<p>{{project['desc']}}</p>
@@ -116,8 +95,8 @@
 				<!-- Three -->
 					<section id="three">
 						<h2>Get In Touch</h2>
-						<p>I am open to colaborations and projects. So, if you have ideas
-							do consider getting in touch.</p>
+						<p>You can reach out to me using this form or drop me an email.
+						I typically reply with in 24h.</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
 								<form method="post" action="/contact" id="contact-form">
@@ -127,8 +106,7 @@
 										<div class="col-6 col-12-xsmall">
 											<input type="email" name="email" id="email" placeholder="Email" /></div>
 										<div class="col-12">
-											<textarea name="message" id="message" placeholder="Message" rows="4">
-											</textarea></div>
+											<textarea name="message" id="message" placeholder="Message" rows="4" ></textarea></div>
 									</div>
 								</form>
 								<ul class="actions">
@@ -139,13 +117,15 @@
 								<ul class="labeled-icons">
 									<li>
 										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										IIIT Sonepat<br />
-										SBIT, Palri Khurd<br />
-										Haryana
+										Hire me
 									</li>
 									<li>
 										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										000-000-0000
+										Collaborate
+									</li>
+									<li>
+										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
+										Just talk
 									</li>
 									<li>
 										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
@@ -157,8 +137,6 @@
 					</section>
 
 			</div>
-
-		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
 					<ul class="icons">
@@ -172,15 +150,5 @@
 					</ul>
 				</div>
 			</footer>
-
-		<!-- Scripts -->
-<!--			<script src="../static/assets/js/jquery.min.js"></script>-->
-			<!-- <script src="../static/assets/js/jquery.poptrox.min.js"></script> -->
-			<script src="../static/assets/js/browser.min.js"></script>
-			<script src="../static/assets/js/breakpoints.min.js"></script>
-			<script src="../static/assets/js/util.js"></script>
-			<script src="../static/assets/js/main.js"></script>
-
-	</body>
-</html>
 	
+			{% include "footer.html" %}

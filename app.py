@@ -1,19 +1,34 @@
-from flask import Flask, render_template, request, redirect, url_for
+from functools import wraps
+from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import datetime as dt
 import pytz
 import pymongo
 
-
+# constants
+app = Flask(__name__)
 IST = pytz.timezone('Asia/Kolkata')
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
-
-mydb = myclient['portfolio_website']
+mydb = myclient.portfolio_website
 M_pf_pro = mydb['pf_pro']
 M_contact_form = mydb['contact_form']
+# routes
+
+from user import routes
+
+
+# decorators
+def loggedin(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if session['logged_in']:
+            return f(*args, *kwargs)
+        else:
+            return redirect('/')
+
+    return wrap
 
 
 def portfolio_schema(name, desc, repo_link, img_link):
@@ -31,42 +46,55 @@ def home():
     return render_template('index.html', projs=projs)
 
 
-@app.route('/ele')
+@app.route('/ele/')
 def elements():
     return render_template('elements.html')
 
 
-@app.route('/contact-responses')
+@app.route('/contact-responses/')
 def contact_responses():
     res = list(M_contact_form.find().sort([
-              ('date', pymongo.DESCENDING),
-              ('time', pymongo.DESCENDING)
-            ]))
+        ('date', pymongo.DESCENDING),
+        ('time', pymongo.DESCENDING)
+    ]))
     print(res)
 
     return render_template('contact_me_res.html', responses=res, c=len(res))
 
 
-@app.route('/contact', methods=['POST'])
+@app.route('/contact/', methods=['POST'])
 def contact_form():
     if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
         today = dt.datetime.now(IST)
         time = today.strftime('%H:%M:%S')
         date = today.strftime('%d/%m/%Y')
 
         d = contact_me(
-            name=name,
-            email=email,
-            message=message,
+            name=request.form.get('name'),
+            email=request.form.get('email'),
+            message=request.form.get('message'),
             time=time,
             date=date
         )
         M_contact_form.insert_one(d)
 
         return redirect(url_for('home'))
+
+
+@app.route('/login/')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/signup/')
+def signupf():
+    return render_template('signup.html')
+
+
+@app.route('/dashboard/')
+@loggedin
+def dashboard():
+    return render_template('dashboard.html')
 
 
 if __name__ == '__main__':
