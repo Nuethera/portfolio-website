@@ -10,13 +10,18 @@ IST = pytz.timezone('Asia/Kolkata')
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
-# routes
-
-from user import routes
-#
-mydb = myclient['portfolio_website']
+mydb = myclient.portfolio_website
 M_pf_pro = mydb['pf_pro']
 M_contact_form = mydb['contact_form']
+# routes
+
+
+
+#
+
+
+from user import routes
+
 
 
 def portfolio_schema(name, desc, repo_link, img_link):
@@ -34,12 +39,12 @@ def home():
     return render_template('index.html', projs=projs)
 
 
-@app.route('/ele')
+@app.route('/ele/')
 def elements():
     return render_template('elements.html')
 
 
-@app.route('/contact-responses')
+@app.route('/contact-responses/')
 def contact_responses():
     res = list(M_contact_form.find().sort([
         ('date', pymongo.DESCENDING),
@@ -50,26 +55,33 @@ def contact_responses():
     return render_template('contact_me_res.html', responses=res, c=len(res))
 
 
-@app.route('/contact', methods=['POST'])
+@app.route('/contact/', methods=['POST'])
 def contact_form():
     if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
         today = dt.datetime.now(IST)
         time = today.strftime('%H:%M:%S')
         date = today.strftime('%d/%m/%Y')
 
         d = contact_me(
-            name=name,
-            email=email,
-            message=message,
+            name=request.form.get('name'),
+            email=request.form.get('email'),
+            message=request.form.get('message'),
             time=time,
             date=date
         )
         M_contact_form.insert_one(d)
 
         return redirect(url_for('home'))
+
+
+@app.route('/login/')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/signup/')
+def signupf():
+    return render_template('signup.html')
 
 
 if __name__ == '__main__':
