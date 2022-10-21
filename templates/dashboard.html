@@ -1,0 +1,40 @@
+{% include 'header.html' %}
+<body class="is-preload">
+
+    <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="#" class="image avatar"><img src="../static/images/avatar1.jpg" alt="" /></a>
+                <h1><strong>I am Vaishnav</strong>, a budding developer<br />
+                and a computer science student<br />
+                at <a href="http://iiitsonepat.ac.in/">IIIT Sonepat</a>.</h1>
+            </div>
+        </header>
+
+    <!-- Main -->
+        <div id="main">
+
+            <!-- One -->
+                <section id="one">
+                    <header class="major">
+                        {%if session['logged_in']:%}
+                        <h2>Hello {{session['user']['name']}}</h2>
+                        <ul class="actions">
+                            <li><a href="/user/signout/" class="button">Sign Out</a></li>
+                        </ul>
+                        {%endif%}
+                    </header>
+                    <p>
+                        I am a fast learner and currently I am working on upskilling my
+                        python proffieciency from basic scripting to advanced concepts in
+                        data sceince and ML, using the 100 days of python code bootcamp
+                      by Dr. Angela Yu. I also have expireince with java script and express js
+                         framework. Furthermore, I am fairly confident about my DSA skills.
+                    </p>
+                    <ul class="actions">
+                        <li><a href="https://www.linkedin.com/in/nuethy/" class="button">Learn More</a></li>
+                    </ul>
+                </section>
+    </div>
+    </body>
+{% include 'footer.html' %}

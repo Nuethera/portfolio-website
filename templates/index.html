@@ -76,22 +76,10 @@
 					<section id="two">
 						<h2>Recent Work</h2>
 						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="../static/images/fulls/01.jpg" class="image fit thumb"><img src="../static/images/thumbs/01.jpg" alt="" /></a>
-								<h3>Text To Morse Code</h3>
-								<p>This is a simple python script that converts normal english
-									 text to morse code</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="../static/images/fulls/02.jpg" class="image fit thumb"><img src="../static/images/thumbs/02.jpg" alt="" /></a>
-								<h3>Transcriber Application</h3>
-								<p>This is a TK-inter application that transcribes speech to
-									text and translates it too.</p>
-							</article>
 							{%for project in projs%}
 							<article class="col-6 col-12-xsmall work-item">
 								<a href={{project['repo_link']}} target="_blank" class="image fit thumb">
-									<img src={{project['img_link']}} alt="" height="272px" width="464px"/>
+									<img src={{project['img_link']}} />
 								</a>
 								<h3>{{project['name']}}</h3>
 								<p>{{project['desc']}}</p>
@@ -118,8 +106,7 @@
 										<div class="col-6 col-12-xsmall">
 											<input type="email" name="email" id="email" placeholder="Email" /></div>
 										<div class="col-12">
-											<textarea name="message" id="message" placeholder="Message" rows="4">
-											</textarea></div>
+											<textarea name="message" id="message" placeholder="Message" rows="4" ></textarea></div>
 									</div>
 								</form>
 								<ul class="actions">

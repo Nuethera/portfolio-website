@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
+from functools import wraps
+from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import datetime as dt
 import pytz
@@ -15,13 +16,19 @@ M_pf_pro = mydb['pf_pro']
 M_contact_form = mydb['contact_form']
 # routes
 
-
-
-#
-
-
 from user import routes
 
+
+# decorators
+def loggedin(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if session['logged_in']:
+            return f(*args, *kwargs)
+        else:
+            return redirect('/')
+
+    return wrap
 
 
 def portfolio_schema(name, desc, repo_link, img_link):
@@ -82,6 +89,12 @@ def login():
 @app.route('/signup/')
 def signupf():
     return render_template('signup.html')
+
+
+@app.route('/dashboard/')
+@loggedin
+def dashboard():
+    return render_template('dashboard.html')
 
 
 if __name__ == '__main__':
