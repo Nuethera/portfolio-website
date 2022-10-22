@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, session, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import mydb
+from mydb.db import *
 import uuid
 
 M_users = mydb['users']
@@ -41,10 +41,8 @@ class User:
         return redirect('/')
 
     def logIn(self):
-        email = request.form.get('email')
-        password = request.form.get('password')
-        u = M_users.find_one({'email': email})
-        if u and check_password_hash(u['password'], password):
+        u = M_users.find_one({'email': request.form.get('email')})
+        if u and check_password_hash(u['password'], request.form.get('password')):
             return self.start_session(u)
         else:
             return jsonify({"error": "Invalid credentials"}), 401

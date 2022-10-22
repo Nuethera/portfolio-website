@@ -3,19 +3,17 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import datetime as dt
 import pytz
-import pymongo
+
 
 # constants
 app = Flask(__name__)
 IST = pytz.timezone('Asia/Kolkata')
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
-mydb = myclient.portfolio_website
-M_pf_pro = mydb['pf_pro']
-M_contact_form = mydb['contact_form']
-# routes
+# database
+from mydb.db import *
 
+# routes
 from user import routes
 
 
@@ -29,15 +27,6 @@ def loggedin(f):
             return redirect('/')
 
     return wrap
-
-
-def portfolio_schema(name, desc, repo_link, img_link):
-    return {'name': name, 'desc': desc, 'repo_link': repo_link, 'img_link': img_link}
-
-
-def contact_me(name, email, message, date, time, status='Pending'):
-    return {'name': name, 'email': email, 'message': message, 'date': date, 'time': time,
-            'status': status}
 
 
 @app.route('/')
