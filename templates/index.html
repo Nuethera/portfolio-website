@@ -13,7 +13,18 @@
 			</header>
 
 		<!-- Main -->
+		<nav class="navbar">
+			
+			<ul>
+                <li id="nav-title"><span id="greeting">Good</span></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+			<hr>
+		</nav>
 			<div id="main">
+				
 
 				<!-- One -->
 					<section id="one">
@@ -33,18 +44,6 @@
 						</ul>
 					</section>
 
-				<!-- Two -->
-<!--
-		Template for portfolio projects
-				{%for project in projs%}
-				<article class="col-6 col-12-xsmall work-item">
-					<a href={{project['repo_link']}} class="image fit thumb"><img src={{project['img_link']}} alt="" /></a>
-					<h3>{{project['name']}}/h3>
-					<p>{{project['desc']}}</p>
-				</article>
-				{%endfor%}
-
--->
 
 				<section id="skills">
 					<h2>My Skills</h2>
@@ -79,7 +78,7 @@
 							{%for project in projs%}
 							<article class="col-6 col-12-xsmall work-item">
 								<a href={{project['repo_link']}} target="_blank" class="image fit thumb">
-									<img src={{project['img_link']}} />
+									<img src={{project['image_link']}} />
 								</a>
 								<h3>{{project['name']}}</h3>
 								<p>{{project['desc']}}</p>
@@ -102,11 +101,11 @@
 								<form method="post" action="/contact" id="contact-form">
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall">
-											<input type="text" name="name" id="name" placeholder="Name" /></div>
+											<input type="text" name="name" id="name" placeholder="Name" required/></div>
 										<div class="col-6 col-12-xsmall">
-											<input type="email" name="email" id="email" placeholder="Email" /></div>
+											<input type="email" name="email" id="email" placeholder="Email" required/></div>
 										<div class="col-12">
-											<textarea name="message" id="message" placeholder="Message" rows="4" ></textarea></div>
+											<textarea name="message" id="message" placeholder="Message" rows="4" required ></textarea></div>
 									</div>
 								</form>
 								<ul class="actions">
@@ -117,15 +116,15 @@
 								<ul class="labeled-icons">
 									<li>
 										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										Hire me
+										You can Hire me
 									</li>
 									<li>
 										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										Collaborate
+										or Collaborate on Projects
 									</li>
 									<li>
 										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										Just talk
+										or Just talk about Tech
 									</li>
 									<li>
 										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>

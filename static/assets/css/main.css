@@ -1789,6 +1789,43 @@ input, select, textarea {
 		font-size: 2em;
 	}
 
+
+
+/* navbar */
+	.navbar {
+		padding: 1em 4em 0em;
+	}
+	
+
+	.navbar li {
+		float:right;
+		list-style: none; 
+		margin: 13px 20px;
+	}
+
+	.navbar ul{
+		overflow: auto;
+		padding: 0;
+		margin: 0;
+	}
+	#nav-title {
+		float:left;
+		list-style: none; 
+		margin: 13px 20px 13px 0px;
+		padding: 0;
+		border: 0;
+		font: inherit;
+		vertical-align: baseline;
+		font-weight: 600;
+
+	}
+	#nav-title span {
+		font-size: 1.5em;
+	}
+	.navbar hr {
+		margin: 0;
+
+	}
 /* Form */
 
 	form {
@@ -2030,16 +2067,6 @@ input, select, textarea {
 			font-family: 'Font Awesome 5 Brands';
 		}
 
-/* Image */
-	.crp_pf {
-		width: 740px; 
-		height: 434px; 
-		overflow: hidden;
-		}
-
-	.crp_pf img {
-		margin: -370px 0px 0px -217px;
-		}
 /* Image */
 
 	.image {
@@ -2450,7 +2477,9 @@ input, select, textarea {
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		background-color: transparent;
 		border-radius: 0.35em;
-		border: solid 3px #efefef;
+		/* border: solid 3px #efefef; */
+		
+		border: solid 3px #B1A5A2;
 		color: #787878 !important;
 		cursor: pointer;
 		display: inline-block;
@@ -2704,6 +2733,13 @@ input, select, textarea {
 				margin-top: 0;
 				padding-top: 0;
 			}
+/* navbar */
+	.navbar {
+		margin-left: 35%;
+		max-width: 54em;
+		padding: 1em 4em 0 4em;
+		width: calc(100% - 35%);
+	}
 
 /* Poptrox */
 
@@ -3037,6 +3073,14 @@ input, select, textarea {
 				width: calc(100% - 30%);
 			}
 
+		/* navbar */
+			.navbar {
+				margin-left: 30%;
+				max-width: none;
+				padding: 1em 3em 0 3em;
+				width: calc(100% - 30%);
+			}
+
 	}
 
 /* Medium */
@@ -3119,6 +3163,13 @@ input, select, textarea {
 				width: 100%;
 			}
 
+		/* navbar */
+			.navbar {
+				margin: 0;
+				padding: 1em 4em 0;
+				width: 100%;
+			}
+
 	}
 
 /* Small */
@@ -3185,6 +3236,12 @@ input, select, textarea {
 					margin: 2.25em 0 0 0;
 					padding: 2.25em 0 0 0;
 				}
+		
+		
+		/* navbar */
+			.navbar {
+				padding: 1em 1.5em 0 1.5em;
+			}
 
 		/* Poptrox */
 

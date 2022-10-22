@@ -119,7 +119,7 @@ celerybeat.pid
 
 #other
 projects.xlsx
-.gitignore
+projectss.csv
 
 
 # Environments
@@ -153,3 +153,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+/projectss.csv

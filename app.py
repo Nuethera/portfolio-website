@@ -1,3 +1,4 @@
+import random
 from functools import wraps
 from flask import Flask, render_template, request, redirect, url_for, session
 import os
@@ -32,7 +33,9 @@ def loggedin(f):
 @app.route('/')
 def home():
     projs = list(M_pf_pro.find())
-    return render_template('index.html', projs=projs)
+    random.shuffle(projs)
+
+    return render_template('index.html', projs=projs[:6])
 
 
 @app.route('/ele/')
