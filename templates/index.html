@@ -21,7 +21,7 @@
 					<li id="nav-title"><span id="">Hello {{ session['user']['name'].split()[0] }}</span></li>
 					
 				</ul>
-				<ul class="right">
+				<ul class="right nav-menu">
 					<li><a href="#skills">Skills</a></li>
 					<li><a href="#two">Projects</a></li>
 					<li><a href="#three">Contact me</a></li>
@@ -32,13 +32,18 @@
 					<li id="nav-title"><span id="greeting">Good</span></li>
 					
 				</ul>
-				<ul class="right">
+				<ul class="right nav-menu">
 					<li><a href="#skills">Skills</a></li>
 					<li><a href="#two">Projects</a></li>
 					<li><a href="#three">Contact me</a></li>
 					<li><a href="/login/">Login</a></li>		
 				</ul>
 				{%endif%}
+				<div class="hamburger">
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+				</div>
 			  </div>
 			<hr>
 		</nav>
