@@ -13,14 +13,33 @@
 			</header>
 
 		<!-- Main -->
-		<nav class="navbar">
-			
-			<ul>
-                <li id="nav-title"><span id="greeting">Good</span></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact us</a></li>
-            </ul>
+		<nav class="navbar top">
+			<div class=" bar">
+				{% if session['logged_in'] %}
+				<ul class="left">
+					
+					<li id="nav-title"><span id="">Hello {{ session['user']['name'].split()[0] }}</span></li>
+					
+				</ul>
+				<ul class="right">
+					<li><a href="#skills">Skills</a></li>
+					<li><a href="#two">Projects</a></li>
+					<li><a href="#three">Contact me</a></li>
+					<li><a href="/user/signout/">Sign Out</a></li>				
+				</ul>
+				{% else %}
+				<ul class="left">
+					<li id="nav-title"><span id="greeting">Good</span></li>
+					
+				</ul>
+				<ul class="right">
+					<li><a href="#skills">Skills</a></li>
+					<li><a href="#two">Projects</a></li>
+					<li><a href="#three">Contact me</a></li>
+					<li><a href="/login/">Login</a></li>		
+				</ul>
+				{%endif%}
+			  </div>
 			<hr>
 		</nav>
 			<div id="main">
@@ -120,11 +139,11 @@
 									</li>
 									<li>
 										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										or Collaborate on Projects
+										Or Collaborate on Projects
 									</li>
 									<li>
 										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										or Just talk about Tech
+										Or Just talk about Tech
 									</li>
 									<li>
 										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>

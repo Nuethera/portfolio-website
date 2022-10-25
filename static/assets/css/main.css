@@ -71,6 +71,7 @@ input, select, textarea {
 
 	html {
 		box-sizing: border-box;
+		scroll-behavior: smooth;
 	}
 
 	*, *:before, *:after {
@@ -1793,14 +1794,35 @@ input, select, textarea {
 
 /* navbar */
 	.navbar {
-		padding: 1em 4em 0em;
+		padding: 1em 1em 0em 2em;	
+		z-index: 1;
+		width: 100%;
+		background-color: #fff;
+	}
+	.top {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;		
+	}
+	.left {
+		float: left;
+	}
+	  
+	.right {
+		float: right;
 	}
 	
-
-	.navbar li {
-		float:right;
+	.bar {		
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		overflow: auto;
+	}	  
+	
+	.navbar li {		
 		list-style: none; 
-		margin: 13px 20px;
+		/* margin: 13px 20px; */
+		display: inline-block;
 	}
 
 	.navbar ul{
@@ -1809,18 +1831,17 @@ input, select, textarea {
 		margin: 0;
 	}
 	#nav-title {
-		float:left;
+		/* float:left; */
 		list-style: none; 
 		margin: 13px 20px 13px 0px;
 		padding: 0;
 		border: 0;
 		font: inherit;
 		vertical-align: baseline;
-		font-weight: 600;
-
 	}
 	#nav-title span {
 		font-size: 1.5em;
+		font-weight: 500;
 	}
 	.navbar hr {
 		margin: 0;
@@ -2718,7 +2739,7 @@ input, select, textarea {
 	#main {
 		margin-left: 35%;
 		max-width: 54em;
-		padding: 8em 4em 4em 4em;
+		padding: 3em 4em 4em 4em;
 		width: calc(100% - 35%);
 	}
 
@@ -2737,266 +2758,10 @@ input, select, textarea {
 	.navbar {
 		margin-left: 35%;
 		max-width: 54em;
-		padding: 1em 4em 0 4em;
+		padding: 1em 1em 0 2em;
 		width: calc(100% - 35%);
 	}
 
-/* Poptrox */
-
-	@-moz-keyframes spin {
-		0% {
-			-moz-transform: rotate(0deg);
-			-webkit-transform: rotate(0deg);
-			-ms-transform: rotate(0deg);
-			transform: rotate(0deg);
-		}
-
-		100% {
-			-moz-transform: rotate(360deg);
-			-webkit-transform: rotate(360deg);
-			-ms-transform: rotate(360deg);
-			transform: rotate(360deg);
-		}
-	}
-
-	@-webkit-keyframes spin {
-		0% {
-			-moz-transform: rotate(0deg);
-			-webkit-transform: rotate(0deg);
-			-ms-transform: rotate(0deg);
-			transform: rotate(0deg);
-		}
-
-		100% {
-			-moz-transform: rotate(360deg);
-			-webkit-transform: rotate(360deg);
-			-ms-transform: rotate(360deg);
-			transform: rotate(360deg);
-		}
-	}
-
-	@-ms-keyframes spin {
-		0% {
-			-moz-transform: rotate(0deg);
-			-webkit-transform: rotate(0deg);
-			-ms-transform: rotate(0deg);
-			transform: rotate(0deg);
-		}
-
-		100% {
-			-moz-transform: rotate(360deg);
-			-webkit-transform: rotate(360deg);
-			-ms-transform: rotate(360deg);
-			transform: rotate(360deg);
-		}
-	}
-
-	@keyframes spin {
-		0% {
-			-moz-transform: rotate(0deg);
-			-webkit-transform: rotate(0deg);
-			-ms-transform: rotate(0deg);
-			transform: rotate(0deg);
-		}
-
-		100% {
-			-moz-transform: rotate(360deg);
-			-webkit-transform: rotate(360deg);
-			-ms-transform: rotate(360deg);
-			transform: rotate(360deg);
-		}
-	}
-
-	.poptrox-popup {
-		-moz-box-sizing: content-box;
-		-webkit-box-sizing: content-box;
-		-ms-box-sizing: content-box;
-		box-sizing: content-box;
-		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-		background: #fff;
-		border-radius: 0.35em;
-		box-shadow: 0 0.1em 0.15em 0 rgba(0, 0, 0, 0.15);
-		overflow: hidden;
-		padding-bottom: 3em;
-	}
-
-		.poptrox-popup .loader {
-			text-decoration: none;
-			-moz-animation: spin 1s linear infinite;
-			-webkit-animation: spin 1s linear infinite;
-			-ms-animation: spin 1s linear infinite;
-			animation: spin 1s linear infinite;
-			font-size: 1.5em;
-			height: 1em;
-			left: 50%;
-			line-height: 1em;
-			margin: -0.5em 0 0 -0.5em;
-			position: absolute;
-			top: 50%;
-			width: 1em;
-		}
-
-			.poptrox-popup .loader:before {
-				-moz-osx-font-smoothing: grayscale;
-				-webkit-font-smoothing: antialiased;
-				display: inline-block;
-				font-style: normal;
-				font-variant: normal;
-				text-rendering: auto;
-				line-height: 1;
-				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
-				font-weight: 900;
-			}
-
-			.poptrox-popup .loader:before {
-				content: '\f1ce';
-			}
-
-		.poptrox-popup .caption {
-			background: #fff;
-			bottom: 0;
-			cursor: default;
-			font-size: 0.9em;
-			height: 3em;
-			left: 0;
-			line-height: 2.8em;
-			position: absolute;
-			text-align: center;
-			width: 100%;
-			z-index: 1;
-		}
-
-		.poptrox-popup .nav-next,
-		.poptrox-popup .nav-previous {
-			text-decoration: none;
-			-moz-transition: opacity 0.2s ease-in-out;
-			-webkit-transition: opacity 0.2s ease-in-out;
-			-ms-transition: opacity 0.2s ease-in-out;
-			transition: opacity 0.2s ease-in-out;
-			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-			background: rgba(0, 0, 0, 0.01);
-			cursor: pointer;
-			height: 100%;
-			opacity: 0;
-			position: absolute;
-			top: 0;
-			width: 50%;
-		}
-
-			.poptrox-popup .nav-next:before,
-			.poptrox-popup .nav-previous:before {
-				-moz-osx-font-smoothing: grayscale;
-				-webkit-font-smoothing: antialiased;
-				display: inline-block;
-				font-style: normal;
-				font-variant: normal;
-				text-rendering: auto;
-				line-height: 1;
-				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
-				font-weight: 900;
-			}
-
-			.poptrox-popup .nav-next:before,
-			.poptrox-popup .nav-previous:before {
-				color: #fff;
-				font-size: 2.5em;
-				height: 1em;
-				line-height: 1em;
-				margin-top: -0.75em;
-				position: absolute;
-				text-align: center;
-				top: 50%;
-				width: 1.5em;
-			}
-
-		.poptrox-popup .nav-next {
-			right: 0;
-		}
-
-			.poptrox-popup .nav-next:before {
-				content: '\f105';
-				right: 0;
-			}
-
-		.poptrox-popup .nav-previous {
-			left: 0;
-		}
-
-			.poptrox-popup .nav-previous:before {
-				content: '\f104';
-				left: 0;
-			}
-
-		.poptrox-popup .closer {
-			text-decoration: none;
-			-moz-transition: opacity 0.2s ease-in-out;
-			-webkit-transition: opacity 0.2s ease-in-out;
-			-ms-transition: opacity 0.2s ease-in-out;
-			transition: opacity 0.2s ease-in-out;
-			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-			color: #fff;
-			height: 4em;
-			line-height: 4em;
-			opacity: 0;
-			position: absolute;
-			right: 0;
-			text-align: center;
-			top: 0;
-			width: 4em;
-			z-index: 2;
-		}
-
-			.poptrox-popup .closer:before {
-				-moz-osx-font-smoothing: grayscale;
-				-webkit-font-smoothing: antialiased;
-				display: inline-block;
-				font-style: normal;
-				font-variant: normal;
-				text-rendering: auto;
-				line-height: 1;
-				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
-				font-weight: 900;
-			}
-
-			.poptrox-popup .closer:before {
-				-moz-box-sizing: content-box;
-				-webkit-box-sizing: content-box;
-				-ms-box-sizing: content-box;
-				box-sizing: content-box;
-				border-radius: 100%;
-				border: solid 3px rgba(255, 255, 255, 0.5);
-				content: '\f00d';
-				display: block;
-				font-size: 1em;
-				height: 1.75em;
-				left: 50%;
-				line-height: 1.75em;
-				margin: -0.875em 0 0 -0.875em;
-				position: absolute;
-				top: 50%;
-				width: 1.75em;
-			}
-
-		.poptrox-popup:hover .nav-next,
-		.poptrox-popup:hover .nav-previous {
-			opacity: 0.5;
-		}
-
-			.poptrox-popup:hover .nav-next:hover,
-			.poptrox-popup:hover .nav-previous:hover {
-				opacity: 1.0;
-			}
-
-		.poptrox-popup:hover .closer {
-			opacity: 0.5;
-		}
-
-			.poptrox-popup:hover .closer:hover {
-				opacity: 1.0;
-			}
 
 /* Touch */
 
@@ -3011,12 +2776,6 @@ input, select, textarea {
 	body.is-touch #header {
 		background-attachment: scroll;
 		background-size: auto, cover;
-	}
-
-	body.is-touch .poptrox-popup .nav-next,
-	body.is-touch .poptrox-popup .nav-previous,
-	body.is-touch .poptrox-popup .closer {
-		opacity: 1.0 !important;
 	}
 
 /* XLarge */
@@ -3077,7 +2836,7 @@ input, select, textarea {
 			.navbar {
 				margin-left: 30%;
 				max-width: none;
-				padding: 1em 3em 0 3em;
+				padding: 1em 1em 0 3em;
 				width: calc(100% - 30%);
 			}
 
@@ -3166,8 +2925,21 @@ input, select, textarea {
 		/* navbar */
 			.navbar {
 				margin: 0;
-				padding: 1em 4em 0;
+				padding: 1em 1em 0 2em;
 				width: 100%;
+			}
+			#nav-title {
+				float:left;
+				list-style: none; 
+				margin: 13px 20px 13px 0px;
+				padding: 0;
+				border: 0;
+				font: inherit;
+				vertical-align: baseline;
+			}
+			#nav-title span {
+				font-size: 1.5em;
+				font-weight: 500;
 			}
 
 	}
@@ -3189,6 +2961,7 @@ input, select, textarea {
 			h3 {
 				font-size: 1em;
 			}
+			
 
 		/* Section/Article */
 
@@ -3240,7 +3013,11 @@ input, select, textarea {
 		
 		/* navbar */
 			.navbar {
-				padding: 1em 1.5em 0 1.5em;
+				padding: 1em 1em 0 1em;
+			}
+			#nav-title span {
+				font-size: 1.2em;
+				font-weight: 500;
 			}
 
 		/* Poptrox */

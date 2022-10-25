@@ -1,10 +1,9 @@
 import random
 from functools import wraps
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, abort
 import os
 import datetime as dt
 import pytz
-
 
 # constants
 app = Flask(__name__)
@@ -25,6 +24,22 @@ def loggedin(f):
         if session['logged_in']:
             return f(*args, *kwargs)
         else:
+            print('Log in please')
+            return redirect('/')
+
+    return wrap
+
+
+def admin_only(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if session['logged_in']:
+            if session['user']['admin']:
+                return f(*args, *kwargs)
+            else:
+                return abort(403)
+        else:
+            print('Log in please')
             return redirect('/')
 
     return wrap
@@ -44,12 +59,12 @@ def elements():
 
 
 @app.route('/contact-responses/')
+@admin_only
 def contact_responses():
     res = list(M_contact_form.find().sort([
         ('date', pymongo.DESCENDING),
         ('time', pymongo.DESCENDING)
     ]))
-    print(res)
 
     return render_template('contact_me_res.html', responses=res, c=len(res))
 
