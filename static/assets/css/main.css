@@ -1841,7 +1841,6 @@ input, select, textarea {
 	
 	.navbar li {		
 		list-style: none; 
-		/* margin: 13px 20px; */
 		display: inline-block;
 	}
 
@@ -1851,7 +1850,7 @@ input, select, textarea {
 		margin: 0;
 	}
 	#nav-title {
-		/* float:left; */
+		
 		list-style: none; 
 		margin: 13px 20px 13px 0px;
 		padding: 0;
@@ -2521,7 +2520,7 @@ input, select, textarea {
 		border-radius: 0.35em;
 		/* border: solid 3px #efefef; */
 		
-		border: solid 3px #B1A5A2;
+		border: solid 2px #B1A5A2;
 		color: #787878 !important;
 		cursor: pointer;
 		display: inline-block;
@@ -2784,20 +2783,6 @@ input, select, textarea {
 	}
 
 
-/* Touch */
-
-	body.is-touch .image.thumb:before {
-		opacity: 0.5 !important;
-	}
-
-	body.is-touch .image.thumb:after {
-		display: none !important;
-	}
-
-	body.is-touch #header {
-		background-attachment: scroll;
-		background-size: auto, cover;
-	}
 
 /* XLarge */
 
@@ -3037,7 +3022,7 @@ input, select, textarea {
 				padding: 1em 1em 0 1em;
 			}
 			#nav-title span {
-				font-size: 1.2em;
+				font-size: 1.5em;
 				font-weight: 500;
 			}
 

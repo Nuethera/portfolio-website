@@ -1,6 +1,6 @@
 import random
 from functools import wraps
-from flask import Flask, render_template, request, redirect, url_for, session, abort
+from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 import os
 import datetime as dt
 import pytz
@@ -71,21 +71,36 @@ def contact_responses():
 
 @app.route('/contact/', methods=['POST'])
 def contact_form():
-    if request.method == 'POST':
-        today = dt.datetime.now(IST)
-        time = today.strftime('%H:%M:%S')
-        date = today.strftime('%d/%m/%Y')
+    d = session.get('ctf', '')
+    today = dt.datetime.now()
+    print(d)
+    time = today.strftime('%H:%M:%S')
+    date = today.strftime('%d/%m/%Y')
 
-        d = contact_me(
+    def send_message():
+        e = contact_me(
             name=request.form.get('name'),
             email=request.form.get('email'),
             message=request.form.get('message'),
             time=time,
             date=date
         )
-        M_contact_form.insert_one(d)
+        M_contact_form.insert_one(e)
 
-        return redirect(url_for('home'))
+    if len(d) > 0:
+        d = dt.datetime.strptime(d, '%H:%M:%S - %d/%m/%Y')
+        delta = today - d
+        if delta.seconds > 12 * 3600:
+            send_message()
+            session['ctf'] = today.strftime('%H:%M:%S - %d/%m/%Y')
+            return jsonify({'msg': "message sent"}), 200
+        else:
+            return jsonify({'error': "You can send message once every 12 hour"}), 400
+
+    else:
+        send_message()
+        session['ctf'] = today.strftime('%H:%M:%S - %d/%m/%Y')
+        return jsonify({'msg': "message sent"}), 200
 
 
 @app.route('/login/')

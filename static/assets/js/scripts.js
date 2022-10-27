@@ -1,3 +1,28 @@
+$("form[name=contact-form]").submit(function(e){
+    
+    var $form = $(this);
+    var $error = $form.find('.error');
+    var data = $form.serialize();
+
+    $.ajax({
+        url:"/contact/",
+        type:"POST",
+        data:data,
+        dataType: "json",
+        success: function(res){
+            alert(res.msg);
+        },
+        error: function(res){
+            alert(res.responseJSON.error);
+        }
+    })
+    
+    $form[0].reset();
+    e.preventDefault();
+
+}); 
+
+
 $("form[name=signup-form]").submit(function(e){
     
     var $form = $(this);
@@ -45,7 +70,7 @@ $("form[name=login-form]").submit(function(e){
     e.preventDefault();
 
 }); 
-document.getElementById("greeting");
+const gr = $("#greeting")[0];
 const hour = new Date().getHours();
 const welcomeTypes = ["Good Morning", "Good Afternoon", "Good Evening"];
 let welcomeText = "";
@@ -54,4 +79,7 @@ if (hour < 12) welcomeText = welcomeTypes[0];
 else if (hour < 18) welcomeText = welcomeTypes[1];
 else welcomeText = welcomeTypes[2];
 
-greeting.innerHTML = welcomeText;
+gr.innerHTML = welcomeText;
+
+const year = new Date().getFullYear();
+$('#cc')[0].innerHTML += year;

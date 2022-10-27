@@ -5,7 +5,7 @@
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="#" class="image avatar"><img src="../static/images/avatar1.jpg" alt="" /></a>
+					<a href="/" class="image avatar"><img src="../static/images/avatar1.jpg" alt="" /></a>
 					<h1><strong>I am Vaishnav</strong>, a budding developer<br />
 					and a computer science student<br />
 					at <a href="http://iiitsonepat.ac.in/">IIIT Sonepat</a>.</h1>
@@ -16,29 +16,24 @@
 		<nav class="navbar top">
 			<div class=" bar">
 				{% if session['logged_in'] %}
-				<ul class="left">
-					
-					<li id="nav-title"><span id="">Hello {{ session['user']['name'].split()[0] }}</span></li>
-					
-				</ul>
-				<ul class="right nav-menu">
-					<li><a href="#skills">Skills</a></li>
-					<li><a href="#two">Projects</a></li>
-					<li><a href="#three">Contact me</a></li>
-					<li><a href="/user/signout/">Sign Out</a></li>				
+				<ul class="left">					
+					<li id="nav-title"><span id="greeting">Good</span><span id="">, {{ session['user']['name'].split()[0] }}</span></li>					
 				</ul>
 				{% else %}
 				<ul class="left">
-					<li id="nav-title"><span id="greeting">Good</span></li>
-					
-				</ul>
-				<ul class="right nav-menu">
-					<li><a href="#skills">Skills</a></li>
-					<li><a href="#two">Projects</a></li>
-					<li><a href="#three">Contact me</a></li>
-					<li><a href="/login/">Login</a></li>		
-				</ul>
+					<li id="nav-title"><span id="greeting">Good</span></li></ul>
 				{%endif%}
+				<ul class="right nav-menu">
+					<li><a class="nav-link" href="#skills">Skills</a></li>
+					<li><a class="nav-link" href="#two">Projects</a></li>
+					<li><a class="nav-link" href="#three">Contact me</a></li>
+					{% if session['logged_in'] %}
+					<li><a class="nav-link" href="/user/signout/">Sign Out</a></li>	
+					{% else %}			
+					<li><a class="nav-link" href="/login/">Login</a></li>
+					{%endif%}		
+				</ul>
+				
 				<div class="hamburger">
 					<span class="line"></span>
 					<span class="line"></span>
@@ -122,7 +117,7 @@
 						I typically reply with in 24h.</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-								<form method="post" action="/contact" id="contact-form">
+								<form method="post" action="" id="contact-form" name="contact-form">
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall">
 											<input type="text" name="name" id="name" placeholder="Name" required/></div>
@@ -131,6 +126,9 @@
 										<div class="col-12">
 											<textarea name="message" id="message" placeholder="Message" rows="4" required ></textarea></div>
 									</div>
+									<p class="error">
+
+									</p>
 								</form>
 								<ul class="actions">
 									<li><input type="submit" value="Send Message" form="contact-form"/></li>
@@ -169,7 +167,8 @@
 						<li><a href="mailto:vaishnavj2124@outlook.com" target="_blank" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
 					<ul class="copyright">
-						<li>&copy; Vaishnav Jha</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li><span id="cc">
+								&copy; Vaishnav Jha </span></li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
 			</footer>
