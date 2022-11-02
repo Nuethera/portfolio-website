@@ -1,0 +1,29 @@
+<nav class="navbar top">
+    <div class=" bar">
+        {% if session['logged_in'] %}
+        <ul class="left">					
+            <li id="nav-title"><span id="greeting">Good</span><span id="">, {{ session['user']['name'].split()[0] }}</span></li>					
+        </ul>
+        {% else %}
+        <ul class="left">
+            <li id="nav-title"><span id="greeting">Good</span></li></ul>
+        {%endif%}
+        <ul class="right nav-menu">
+            <li><a class="nav-link" href="/">Home</a></li>
+            <li><a class="nav-link" href="#">Blogs</a></li>
+            <li><a class="nav-link" href="/#three">Contact me</a></li>
+            {% if session['logged_in'] %}
+            <li><a class="nav-link" href={{url_for('signOut')}}>Sign Out</a></li>	
+            {% else %}			
+            <li><a class="nav-link" href={{url_for('portal')}}>Login</a></li>
+            {%endif%}		
+        </ul>
+        
+        <div class="hamburger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+      </div>
+    <hr>
+</nav>

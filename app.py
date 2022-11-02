@@ -26,7 +26,7 @@ def loggedin(f):
         else:
             print('Log in please')
             return redirect('/')
-
+    
     return wrap
 
 
@@ -109,9 +109,13 @@ def login():
 
 
 @app.route('/signup/')
-def signupf():
+def signup():
     return render_template('signup.html')
 
+
+@app.route('/userportal/')
+def portal():
+    return render_template('auth_portal.html')
 
 @app.route('/dashboard/')
 @loggedin

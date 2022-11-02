@@ -83,3 +83,13 @@ gr.innerHTML = welcomeText;
 
 const year = new Date().getFullYear();
 $('#cc')[0].innerHTML += year;
+
+
+function show_signin() {
+    $('#signin').removeClass('fbox-hidden');
+    $('#login').addClass('fbox-hidden');    
+}
+function show_login() {
+    $('#signin').addClass('fbox-hidden');
+    $('#login').removeClass('fbox-hidden');    
+}

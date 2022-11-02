@@ -13,35 +13,7 @@
 			</header>
 
 		<!-- Main -->
-		<nav class="navbar top">
-			<div class=" bar">
-				{% if session['logged_in'] %}
-				<ul class="left">					
-					<li id="nav-title"><span id="greeting">Good</span><span id="">, {{ session['user']['name'].split()[0] }}</span></li>					
-				</ul>
-				{% else %}
-				<ul class="left">
-					<li id="nav-title"><span id="greeting">Good</span></li></ul>
-				{%endif%}
-				<ul class="right nav-menu">
-					<li><a class="nav-link" href="#skills">Skills</a></li>
-					<li><a class="nav-link" href="#two">Projects</a></li>
-					<li><a class="nav-link" href="#three">Contact me</a></li>
-					{% if session['logged_in'] %}
-					<li><a class="nav-link" href="/user/signout/">Sign Out</a></li>	
-					{% else %}			
-					<li><a class="nav-link" href="/login/">Login</a></li>
-					{%endif%}		
-				</ul>
-				
-				<div class="hamburger">
-					<span class="line"></span>
-					<span class="line"></span>
-					<span class="line"></span>
-				</div>
-			  </div>
-			<hr>
-		</nav>
+		{% include "navbar.html" %}
 			<div id="main">
 				
 
@@ -158,19 +130,5 @@
 					</section>
 
 			</div>
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/nuethy/" target="_blank" class="icon brands fa-linkedin"><span class="label">Twitter</span></a></li>
-						<li><a href="https://github.com/Nuethera" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://www.instagram.com/nuethy/" target="_blank" class="icon brands fa-instagram"><span class="label">Dribbble</span></a></li>
-						<li><a href="mailto:vaishnavj2124@outlook.com" target="_blank" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li><span id="cc">
-								&copy; Vaishnav Jha </span></li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
-	
+			
 			{% include "footer.html" %}

@@ -1,24 +1,57 @@
-{% include "header.html" %}
-<body class="is-preload">
-    <div class="container">
-        <div class="col-8 col-12-small">
-            <form method="post" action="/contact" id="signup-form" name="signup-form">
-                <div class="gtr-uniform gtr-50">
-                    <div class="col-6 col-12-xsmall">
-                        <input type="text" name="name" id="name" placeholder="Name" required/></div>
-                    <div class="col-6 col-12-xsmall">
-                        <input type="email" name="email" id="email" placeholder="Email" required/></div>
-                    <div class="col-6 col-12-xsmall">
-                        <input type="password" name="password" id="password" placeholder="Password" required/></div>
-                </div>
-                <p class="error"></p>
-            </form>
-            <ul class="actions">
-                <li><input type="submit" value="Send Message" form="signup-form"/></li>
-            </ul>
-        </div>
-    </div>
+    {% include "header.html" %}
 
+<body class="is-preload">
+
+    <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="/" class="image avatar"><img src="../static/images/avatar1.jpg" alt="" /></a>
+                <h1><strong>I am Vaishnav</strong>, a budding developer<br />
+                and a computer science student<br />
+                at <a href="http://iiitsonepat.ac.in/">IIIT Sonepat</a>.</h1>
+            </div>
+        </header>
+
+    <!-- Main -->
+    {% include "navbar.html" %}
+        <div id="main">         
+            <!-- One -->
+                
+            <section id="one">
+                <div class="fbox">
+                    <h1>Welcome!</h1>
+                    <form method="post" id="login-form" name="login-form">
+                        <div class="row gtr-uniform gtr-50">
+                            <div class="col-12 fitem">
+                                <input type="text" name="name" id="name" placeholder="Name" required/>
+                            </div>
+                            <div class="col-12 fitem">
+                                <input type="email" name="email" id="email" placeholder="Email" required />
+                            </div>
+                            <div class="col-12 fitem">
+                                <input type="password" name="password" id="password" placeholder="Password" required />
+                            </div>
+                            
+                            <p class="error error-hidden"></p>
+                            <h5>
+                                Already have an Acount?&nbsp <a href={{url_for('login')}}> Log In</a> 
+                            </h5>
+                        </div>
+                    </form>
+                    <ul class="actions">
+                        <li><input type="submit" value="Login" form="login-form" /></li>
+                    </ul>
+                    
+                    <div class="social-icons">
+                        <h5>Sign In via</h5>
+                        <ul class="icons">
+                            <li><a href="" target="_blank" class="icon brands fa-google"><span class="label">Google</span></a></li>
+                            <li><a href="" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+    </section>
+</div>
 </body>
 
 

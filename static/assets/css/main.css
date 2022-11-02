@@ -1868,9 +1868,91 @@ input, select, textarea {
 
 	}
 /* Form */
+/* ======================================================== */
+	/* .fbox {
+		max-width: 25em;
+		margin-left: 25%;
+		margin-top: 10%;
+	} */
+
+	.fbox {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.fbox h1 {
+		font-size: 2rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+	.fbox h5 {
+		margin-bottom: 0;
+	}
+	.fbox form .row {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+	/* .fbox form .row input {
+		width: 100%;
+		padding: 0.5rem;
+		border: 1px solid #ccc;
+		border-radius: 0.25rem;
+		margin-bottom: 0.5rem;
+	} */
+	.fbox ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.fbox ul li {
+		margin-bottom: 0.5rem;	
+	}
+	/* .fbox ul li input {
+		width: 100%;
+		padding: 0.5rem;
+		border: 1px solid #ccc;
+		border-radius: 0.25rem;
+		margin-bottom: 0.5rem;
+	} */
+	.fbox .social-icons {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+	.fbox .social-icons .icons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 0.5rem;
+		gap: 1rem;
+	}
+	.fbox .social-icons .icons a {
+		margin-right: 1rem;
+	}
+	.fbox .social-icons .icons a:last-child {
+		margin-right: 0;
+	}
+
+	.fbox-hidden {
+		display: none;
+	}
+	/* ================================================= */
+	.error {
+		color: red;
+		margin-bottom: 0.5em;
+	}
+	.error-hidden {
+		display: none;
+	}
 
 	form {
-		margin: 0 0 2em 0;
+		margin: 0 0 1em 0;
 	}
 
 	label {
@@ -1892,7 +1974,7 @@ input, select, textarea {
 		appearance: none;
 		background: #f7f7f7;
 		border-radius: 0.35em;
-		border: solid 2px transparent;
+		border: solid 1px #B1A5A2;
 		color: inherit;
 		display: block;
 		outline: 0;
@@ -1914,7 +1996,8 @@ input, select, textarea {
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #49bf9d;
+			border: solid 2px  #49bf9d
+			
 		}
 
 	select {
@@ -2518,8 +2601,6 @@ input, select, textarea {
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		background-color: transparent;
 		border-radius: 0.35em;
-		/* border: solid 3px #efefef; */
-		
 		border: solid 2px #B1A5A2;
 		color: #787878 !important;
 		cursor: pointer;
