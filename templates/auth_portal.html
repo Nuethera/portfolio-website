@@ -20,7 +20,7 @@
             <section id="one">
                 <div class="fbox fbox-hidden" id="signin">
                     <h1>Welcome!</h1>
-                    <form method="post" id="signin-form" name="login-form">
+                    <form method="post" id="signup-form" name="signup-form" >
                         <div class="row gtr-uniform gtr-50">
                             <div class="col-12 fitem">
                                 <input type="text" name="name" placeholder="Name" required/>
@@ -41,9 +41,9 @@
                     <ul class="actions">
                         <li>
                             {% if session['logged_in'] %} 
-                            <input class='button disabled' type="submit" value="Already Logged In" form="login-form" />
+                            <input class='button disabled' type="submit" value="Already Logged In" form="signup-form" />
                             {% else %}
-                            <input type="submit" value="Sign Up" form="login-form" />
+                            <input type="submit" value="Sign Up" form="signup-form" />
                             {% endif %}
                         </li>
                     </ul>
@@ -61,7 +61,7 @@
 
                 <div class="fbox" id="login">
                     <h1>Welcome!</h1>
-                    <form method="post" id="login-form" name="login-form">
+                    <form method="post" id="login-form" name="login-form" >
                         <div class="row gtr-uniform gtr-50">
                             <div class="col-12 fitem">
                                 <input type="email" name="email" placeholder="Email" required />
@@ -71,7 +71,7 @@
                             </div>
                             <p class="error error-hidden"></p>
                             <h5>
-                                Dont have an account?&nbsp <a href="javascript:show_signin()"> Sign In</a> 
+                                Dont have an account?&nbsp <a href="javascript:show_signin()"> Sign Up</a> 
                             </h5>
                         </div>
                     </form>

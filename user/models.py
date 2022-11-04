@@ -10,10 +10,11 @@ class User:
 
     def start_session(self, user):
         del user['password']
+        del user['ObjectID']
         session['logged_in'] = True
         session['user'] = user
 
-        return jsonify(user), 200
+        return jsonify({'success': "authorisation successful"}), 200
 
     def signUp(self):
         user = {

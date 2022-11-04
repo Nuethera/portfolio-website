@@ -30,7 +30,7 @@ $("form[name=signup-form]").submit(function(e){
     var data = $form.serialize();
 
     $.ajax({
-        url:"../user/signup/",
+        url:"/user/signup/",
         type:"POST",
         data:data,
         dataType: "json",

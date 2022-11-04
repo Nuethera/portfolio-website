@@ -59,7 +59,6 @@ def elements():
 
 
 @app.route('/contact-responses/')
-@admin_only
 def contact_responses():
     res = list(M_contact_form.find().sort([
         ('date', pymongo.DESCENDING),
@@ -103,19 +102,10 @@ def contact_form():
         return jsonify({'msg': "message sent"}), 200
 
 
-@app.route('/login/')
-def login():
-    return render_template('login.html')
-
-
-@app.route('/signup/')
-def signup():
-    return render_template('signup.html')
-
-
 @app.route('/userportal/')
 def portal():
     return render_template('auth_portal.html')
+
 
 @app.route('/dashboard/')
 @loggedin

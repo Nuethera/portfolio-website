@@ -5,24 +5,20 @@
         <header id="header">
             <div class="inner">
                 <a href="#" class="image avatar"><img src="../static/images/avatar1.jpg" alt="" /></a>
-                <h1><strong>I am Vaishnav</strong>, a budding developer<br />
-                and a computer science student<br />
-                at <a href="http://iiitsonepat.ac.in/">IIIT Sonepat</a>.</h1>
+                <h1><strong>Welcome to the blogs page</strong><br />
+                This is where you can see all the blogs<br />
+                 <!-- <a href="http://iiitsonepat.ac.in/">IIIT Sonepat</a>.</h1> -->
             </div>
         </header>
 
     <!-- Main -->
+    {% include 'navbar.html' %}
         <div id="main">
 
             <!-- One -->
                 <section id="one">
                     <header class="major">
-                        {%if session['logged_in']:%}
-                        <h2>Hello {{session['user']['name']}}</h2>
-                        <ul class="actions">
-                            <li><a href="/user/signout/" class="button">Sign Out</a></li>
-                        </ul>
-                        {%endif%}
+                        <h2>All the blogs are listed below!</h2>
                     </header>
                     <p>
                         I am a fast learner and currently I am working on upskilling my
@@ -34,6 +30,18 @@
                     <ul class="actions">
                         <li><a href="https://www.linkedin.com/in/nuethy/" class="button">Learn More</a></li>
                     </ul>
+
+                    <!-- <div class="row">
+                        {%for project in projs%}
+                        <article class="col-6 col-12-xsmall work-item">
+                            <a href={{project['repo_link']}} target="_blank" class="image fit thumb">
+                                <img src={{project['image_link']}} />
+                            </a>
+                            <h3>{{project['name']}}</h3>
+                            <p>{{project['desc']}}</p>
+                        </article>
+                        {%endfor%}
+                    </div> -->
                 </section>
     </div>
     </body>
