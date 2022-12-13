@@ -10,8 +10,8 @@
         {%endif%}
         <ul class="right nav-menu">
             <li><a class="nav-link" href="/">Home</a></li>
-            <li><a class="nav-link" href="#">Blogs</a></li>
-            <li><a class="nav-link" href="/#three">Contact me</a></li>
+            <li><a class="nav-link" href={{url_for('dashboard')}}>Blogs</a></li>
+            <li><a class="nav-link" href={{url_for('home') + "#three"}}>Contact me</a></li>
             {% if session['logged_in'] %}
             <li><a class="nav-link" href={{url_for('signOut')}}>Sign Out</a></li>	
             {% else %}			

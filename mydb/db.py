@@ -1,7 +1,7 @@
 import pymongo
 import os
 
-myclient = pymongo.MongoClient(f"mongodb+srv://nuethy:{os.environ.get('DB_PASS')}@cluster0.3yjvagq.mongodb.net/?retryWrites=true&w=majority")
+myclient = pymongo.MongoClient("mongodb://localhost:27017")
 
 mydb = myclient.portfolio_website
 

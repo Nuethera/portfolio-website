@@ -10,7 +10,7 @@ class User:
 
     def start_session(self, user):
         del user['password']
-        del user['ObjectID']
+        del user['_id']
         session['logged_in'] = True
         session['user'] = user
 
