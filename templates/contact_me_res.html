@@ -1,6 +1,6 @@
 
 {% include "header.html" %}
-<body class="is-preload">
+
 
 	<div class="container">
 		<div class="table-wrapper">
@@ -16,7 +16,7 @@
 			<tbody>
 			{% for i in range(responses|length) %}
 			  <tr>
-				<td>{{ responses[i]['date'] + " - " + responses[i]['time']}}</td>
+				<td class="dt">{{ responses[i]['dt']}}</td>
 				<td>{{ responses[i]['name'] }}</td>
 				<td>{{ responses[i]['message'] }}</td>
 				<td>{{ responses[i]['status'] }}</td>
@@ -33,6 +33,6 @@
 		</div>
 	</div>
 
-</body>
 
+<script src="../static/assets/js/contactpage.js"></script>
 {% include "footer.html" %}

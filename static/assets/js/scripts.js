@@ -1,9 +1,9 @@
-$("form[name=contact-form]").submit(function(e){
-    
+$("form[name=contact-form]").submit(function(e){    
     var $form = $(this);
     var $error = $form.find('.error');
     var data = $form.serialize();
-
+    a = new Date();
+    data += '&dt=' + a.toISOString() 
     $.ajax({
         url:"/contact/",
         type:"POST",

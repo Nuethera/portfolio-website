@@ -59,6 +59,7 @@ def elements():
 
 
 @app.route('/contact-responses/')
+@admin_only
 def contact_responses():
     res = list(M_contact_form.find().sort([
         ('date', pymongo.DESCENDING),
@@ -82,14 +83,15 @@ def contact_form():
             email=request.form.get('email'),
             message=request.form.get('message'),
             time=time,
-            date=date
+            date=date,
+            dt=request.form.get('dt')
         )
         M_contact_form.insert_one(e)
 
     if len(d) > 0:
         d = dt.datetime.strptime(d, '%H:%M:%S - %d/%m/%Y')
         delta = today - d
-        if delta.seconds > 12 * 3600:
+        if delta.seconds > 43200: #43200
             send_message()
             session['ctf'] = today.strftime('%H:%M:%S - %d/%m/%Y')
             return jsonify({'msg': "message sent"}), 200

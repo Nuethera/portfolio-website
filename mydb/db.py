@@ -14,6 +14,6 @@ def portfolio_schema(name, desc, repo_link, img_link):
     return {'name': name, 'desc': desc, 'repo_link': repo_link, 'img_link': img_link}
 
 
-def contact_me(name, email, message, date, time, status='Pending'):
-    return {'name': name, 'email': email, 'message': message, 'date': date, 'time': time,
+def contact_me(name, email, message, dt,date,time, status='Pending'):
+    return {'name': name, 'email': email, 'message': message, 'dt': dt,'date':date,'time':time,
             'status': status}
